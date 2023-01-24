@@ -14,12 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Texto View !!!"/>
+
         <fragment
-            android:id="@+id/sorteoFragment"
-            android:name="com.example.apphourplay.SorteoFragment"
+            android:id="@+id/navHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            app:navGraph="@navigation/navigation"
+            app:defaultNavHost="true"
+            tools:layout="@layout/fragment_inicio" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
