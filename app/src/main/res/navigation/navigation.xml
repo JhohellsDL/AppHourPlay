@@ -19,4 +19,14 @@
         android:name="com.example.apphourplay.SorteoFragment"
         android:label="fragment_sorteo"
         tools:layout="@layout/fragment_sorteo" />
+    <fragment
+        android:id="@+id/reglasFragment"
+        android:name="com.example.apphourplay.ReglasFragment"
+        android:label="fragment_reglas"
+        tools:layout="@layout/fragment_reglas" />
+    <fragment
+        android:id="@+id/horasDeberesFragment"
+        android:name="com.example.apphourplay.HorasDeberesFragment"
+        android:label="fragment_horas_deberes"
+        tools:layout="@layout/fragment_horas_deberes" />
 </navigation>
