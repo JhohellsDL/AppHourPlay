@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/reglasFragment"
         android:icon="@drawable/baseline_balance"
         android:title="@string/reglas" />
     <item
         android:id="@+id/horasDeberesFragment"
-        android:icon="@drawable/baseline_balance"
+        android:icon="@drawable/baseline_av_timer"
         android:title="@string/hora_de_deberes" />
+
 </menu>
