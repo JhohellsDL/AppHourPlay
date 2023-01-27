@@ -6,4 +6,11 @@
     <string name="hour_minutes">00:00</string>
     <string name="hora_de_deberes">Hora de Deberes</string>
     <string name="reglas">Reglas</string>
+    <string name="shared">Hola !</string>
+    <string name="user_name">User NAME</string>
+    <string name="calcule">calcule</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="duolingo">Duolingo</string>
+    <string name="continue_text">Continue</string>
 </resources>

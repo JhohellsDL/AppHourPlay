@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SorteoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/text_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Sorteo Fragment" />
+        android:text="Sorteo Fragment"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+        android:id="@+id/button_compartir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="compartir"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+        android:id="@+id/button_restar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="compartir1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,5 +10,12 @@
         android:id="@+id/horasDeberesFragment"
         android:icon="@drawable/baseline_av_timer"
         android:title="@string/hora_de_deberes" />
+    <item
+        android:id="@+id/mainActivity2"
+        android:title="Item" />
+    <item
+        android:id="@+id/duolingoFragment"
+        android:icon="@drawable/baseline_av_timer"
+        android:title="@string/duolingo" />
 
 </menu>

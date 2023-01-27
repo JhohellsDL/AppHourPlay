@@ -20,7 +20,7 @@ class InicioFragment : Fragment() {
         binding = FragmentInicioBinding.inflate(inflater)
         @Suppress("UNREACHABLE_CODE")
         binding.buttonSorteo.setOnClickListener {
-            it.findNavController().navigate(R.id.action_inicioFragment_to_sorteoFragment)
+            it.findNavController().navigate(InicioFragmentDirections.actionInicioFragmentToSorteoFragment(13))
         }
 
         setHasOptionsMenu(true)

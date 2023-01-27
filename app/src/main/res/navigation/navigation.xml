@@ -18,7 +18,11 @@
         android:id="@+id/sorteoFragment"
         android:name="com.example.apphourplay.SorteoFragment"
         android:label="fragment_sorteo"
-        tools:layout="@layout/fragment_sorteo" />
+        tools:layout="@layout/fragment_sorteo" >
+        <argument
+            android:name="nro_test"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/reglasFragment"
         android:name="com.example.apphourplay.ReglasFragment"
@@ -29,4 +33,14 @@
         android:name="com.example.apphourplay.HorasDeberesFragment"
         android:label="fragment_horas_deberes"
         tools:layout="@layout/fragment_horas_deberes" />
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.apphourplay.MainActivity2"
+        android:label="activity_main2"
+        tools:layout="@layout/activity_main2" />
+    <fragment
+        android:id="@+id/duolingoFragment"
+        android:name="com.example.apphourplay.DuolingoFragment"
+        android:label="fragment_duolingo"
+        tools:layout="@layout/fragment_duolingo" />
 </navigation>
