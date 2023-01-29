@@ -1,5 +1,6 @@
 package com.example.apphourplay
 
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -56,7 +57,8 @@ class DuolingoFragment : Fragment() {
             binding.timeStart.text = "$startHour"
             binding.timeEnd.text = "$endHour"
 
-            binding.progressBar.progress = (unity*timeMinutes).toInt()
+            binding.textState.text = "Start"
+            binding.progressBar.progress = 0 //(unity*timeMinutes).toInt()
             println("start : $startHour - $endHour")
         }
         binding.buttonCalculeTime1.setOnClickListener {
@@ -65,7 +67,8 @@ class DuolingoFragment : Fragment() {
             binding.timeStart1.text = "$startHour1"
             binding.timeEnd1.text = "$endHour1"
 
-            binding.progressBar1.progress = (unity*timeMinutes).toInt()
+            binding.textState1.text = "Start"
+            binding.progressBar1.progress = 0 //(unity*timeMinutes).toInt()
             println("start1 : $startHour1- $endHour1")
         }
 
@@ -82,6 +85,7 @@ class DuolingoFragment : Fragment() {
             println("stop : $startHour - $stopHour - $progress")
             println("stop : $elapsedHour - $timeElapsed")
 
+            binding.textState.text = "Stop"
             binding.timeOnPause.text = "$stopHour"
         }
         binding.buttonStop1.setOnClickListener {
@@ -97,30 +101,33 @@ class DuolingoFragment : Fragment() {
             println("stop1 : $startHour1 - $stopHour1 - $progress1")
             println("stop1 : $elapsedHour1 - $timeElapsed1")
 
+            binding.textState1.text = "Stop"
             binding.timeOnPause1.text = "$stopHour1"
         }
 
         binding.buttonContinue.setOnClickListener {
-            startHour = getCurrentTime()
             newStartHour = getCurrentTime()
 
             endHour = addTime(0,timeRemaining)
 
-            binding.timeNewStart.text = newStartHour
+            binding.timeNewStart.text = startHour
+            binding.timeStart.text = newStartHour
             binding.timeEnd.text = "$endHour"
 
+            binding.textState.text = "Continue"
             println("stop : $newStartHour - $timeRemaining")
             println("stop : $endHour - $timeElapsed")
         }
         binding.buttonContinue1.setOnClickListener {
-            startHour1 = getCurrentTime()
             newStartHour1 = getCurrentTime()
 
             endHour1 = addTime(0,timeRemaining1)
 
-            binding.timeNewStart1.text = newStartHour1
+            binding.timeNewStart1.text = startHour1
+            binding.timeStart1.text = newStartHour1
             binding.timeEnd1.text = "$endHour1"
 
+            binding.textState1.text = "Continue"
             println("continue1 : $newStartHour1 - $timeRemaining1")
             println("continue1 : $endHour1 - $timeElapsed1")
         }
