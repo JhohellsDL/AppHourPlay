@@ -43,7 +43,7 @@ class SorteoFragment : Fragment() {
         val seconds: Long = 1000
         binding.textTest.text ="Starting timer for $seconds seconds"
         println("Starting timer for $seconds seconds")
-        startTimer(seconds)
+        //startTimer(seconds)
         readLine()
 
         binding.buttonCompartir.setOnClickListener {

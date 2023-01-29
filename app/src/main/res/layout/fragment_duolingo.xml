@@ -39,11 +39,32 @@
             android:background="@drawable/card_background_1"
             android:padding="16dp">
 
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_modify_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:src="@drawable/baseline_av_timer"
+                android:tint="@color/gray_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_add_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:tint="@color/green_1"
+                app:layout_constraintEnd_toStartOf="@id/button_modify_time"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/transparent"
+                android:src="@drawable/baseline_more_time"/>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="25dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -55,12 +76,12 @@
                     android:src="@drawable/foto_andrew" />
 
             </androidx.cardview.widget.CardView>
-
             <TextView
                 android:id="@+id/name_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/comfortaa"
                 android:text="@string/andrew"
                 android:textSize="16sp"
@@ -81,19 +102,18 @@
                 app:layout_constraintBottom_toBottomOf="@id/cardview_image"
                 app:layout_constraintStart_toEndOf="@id/cardview_image"
                 app:layout_constraintTop_toBottomOf="@id/name_user" />
-
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa"
                 android:text="Missing 60 minutos"
+                android:textSize="12sp"
                 android:textColor="@color/gray_2"
                 app:layout_constraintBottom_toBottomOf="@id/cardview_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/name_user"
                 app:layout_constraintTop_toTopOf="@id/cardview_image" />
-
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linear_layout_text_times"
                 android:layout_width="0dp"
@@ -215,7 +235,6 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
@@ -225,7 +244,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linear_layout_text_times"
                 app:trackColor="@color/white" />
-
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -240,6 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/comfortaa"
                     android:background="@drawable/button_animado_1"
                     android:text="@string/stop"
                     android:textColor="@color/gray_2"
@@ -250,6 +269,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/comfortaa"
                     android:background="@drawable/button_animado_green"
                     android:text="@string/start"
                     android:textColor="@color/white"
@@ -261,6 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/comfortaa"
                     android:background="@drawable/button_animado_1"
                     android:text="@string/continue_text"
                     android:textColor="@color/gray_2"
@@ -286,11 +307,32 @@
             android:background="@drawable/card_background_1"
             android:padding="16dp">
 
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_modify_time1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:src="@drawable/baseline_av_timer"
+                android:tint="@color/gray_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/button_add_time1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:tint="@color/green_1"
+                app:layout_constraintEnd_toStartOf="@id/button_modify_time1"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/transparent"
+                android:src="@drawable/baseline_more_time"/>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_image1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="25dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -308,10 +350,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginBottom="18dp"
                 android:fontFamily="@font/comfortaa"
                 android:text="@string/matthew"
                 android:textColor="@color/gray_2"
                 android:textStyle="bold"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/cardview_image1"
                 app:layout_constraintStart_toEndOf="@id/cardview_image1"
                 app:layout_constraintTop_toTopOf="@id/cardview_image1" />
@@ -334,6 +378,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/comfortaa"
                 android:text="Missing 60 minutos"
+                android:textSize="12sp"
                 android:textColor="@color/gray_2"
                 app:layout_constraintBottom_toBottomOf="@id/cardview_image1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -489,6 +534,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_animado_1"
                     android:text="@string/stop"
+                    android:fontFamily="@font/comfortaa"
                     android:textColor="@color/gray_2"
                     android:textSize="12sp" />
 
@@ -499,6 +545,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_animado_green"
                     android:text="@string/start"
+                    android:fontFamily="@font/comfortaa"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -510,6 +557,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_animado_1"
                     android:text="@string/continue_text"
+                    android:fontFamily="@font/comfortaa"
                     android:textColor="@color/gray_2"
                     android:textSize="12sp" />
 

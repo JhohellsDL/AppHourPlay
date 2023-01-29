@@ -1,18 +1,26 @@
 package com.example.apphourplay
 
+import android.app.Dialog
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import com.example.apphourplay.databinding.CardDuolingoAddTimeBinding
 import com.example.apphourplay.databinding.FragmentDuolingoBinding
+import com.example.apphourplay.databinding.SettingsDuolingoDialogBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class DuolingoFragment : Fragment() {
 
     private lateinit var binding : FragmentDuolingoBinding
+    private lateinit var bindingDialog: SettingsDuolingoDialogBinding
+    private lateinit var bindingDialogAdd: CardDuolingoAddTimeBinding
 
     private val timeMinutes: Int = 60
 
@@ -38,6 +46,12 @@ class DuolingoFragment : Fragment() {
     private var progress1 : Int = 0
     private var unity1 : Float = 0f
 
+    private var modifyHour: String = "00:00"
+    private var modifyHour1: String = "00:00"
+
+    private var minutesAdd: Int = 0
+    private var minutesAdd1: Int = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +64,104 @@ class DuolingoFragment : Fragment() {
         unity = (100/timeMinutes.toFloat())
 
         println("unityy : $unity")
+
+        binding.buttonAddTime.setOnClickListener {
+            bindingDialogAdd = CardDuolingoAddTimeBinding.inflate(layoutInflater)
+            val myDialog = Dialog(it.context)
+            myDialog.setContentView(bindingDialogAdd.root)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+
+            bindingDialogAdd.btnTest.setOnClickListener {
+                if (bindingDialogAdd.etMinutesAdd.text.toString().isEmpty()){
+                    myDialog.dismiss()
+                } else {
+                    minutesAdd = bindingDialogAdd.etMinutesAdd.text.toString().toInt()
+                    timeRemaining += minutesAdd
+                    binding.textState.text = "Add time"
+                    myDialog.dismiss()
+                }
+            }
+        }
+        binding.buttonAddTime1.setOnClickListener {
+            bindingDialogAdd = CardDuolingoAddTimeBinding.inflate(layoutInflater)
+            val myDialog = Dialog(it.context)
+            myDialog.setContentView(bindingDialogAdd.root)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+
+            bindingDialogAdd.btnTest.setOnClickListener {
+                if (bindingDialogAdd.etMinutesAdd.text.toString().isEmpty()){
+                    myDialog.dismiss()
+                } else {
+                    minutesAdd1 = bindingDialogAdd.etMinutesAdd.text.toString().toInt()
+                    timeRemaining1 += minutesAdd1
+                    binding.textState1.text = "Add time"
+                    myDialog.dismiss()
+                }
+            }
+        }
+
+        binding.buttonModifyTime.setOnClickListener {
+
+            bindingDialog = SettingsDuolingoDialogBinding.inflate(layoutInflater)
+            val myDialog = Dialog(it.context)
+            myDialog.setContentView(bindingDialog.root)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+
+            bindingDialog.btnTest.setOnClickListener {
+                if (bindingDialog.etHourStart.text.toString().isEmpty() || bindingDialog.etMinutesStart.text.toString().isEmpty()){
+                    myDialog.dismiss()
+                } else {
+                    modifyHour = "${bindingDialog.etHourStart.text.toString()}:${bindingDialog.etMinutesStart.text.toString()}"
+                    println("start modify : $modifyHour")
+
+                    startHour = modifyHour
+                    endHour = getNewTime(startHour,0,timeMinutes)
+                    binding.timeStart.text = "$startHour"
+                    binding.timeEnd.text = "$endHour"
+
+                    binding.textState.text = "Modify"
+                    binding.progressBar.progress = 0 //(unity*timeMinutes).toInt()
+                    println("start : $startHour - $endHour")
+
+                    myDialog.dismiss()
+                }
+            }
+        }
+        binding.buttonModifyTime1.setOnClickListener {
+
+            bindingDialog = SettingsDuolingoDialogBinding.inflate(layoutInflater)
+            val myDialog = Dialog(it.context)
+            myDialog.setContentView(bindingDialog.root)
+            myDialog.setCancelable(true)
+            myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            myDialog.show()
+
+            bindingDialog.btnTest.setOnClickListener {
+                if (bindingDialog.etHourStart.text.toString().isEmpty() || bindingDialog.etHourStart.text.toString().isEmpty()){
+                    myDialog.dismiss()
+                } else {
+                    modifyHour1 = "${bindingDialog.etHourStart.text.toString()}:${bindingDialog.etMinutesStart.text.toString()}"
+                    println("start modify : $modifyHour1")
+
+                    startHour1 = modifyHour1
+                    endHour1 = getNewTime(startHour1,0,timeMinutes)
+                    binding.timeStart1.text = "$startHour1"
+                    binding.timeEnd1.text = "$endHour1"
+
+                    binding.textState1.text = "Modifyt"
+                    binding.progressBar1.progress = 0 //(unity*timeMinutes).toInt()
+                    println("start : $startHour1- $endHour1")
+
+                    myDialog.dismiss()
+                }
+            }
+        }
 
         binding.buttonCalculeTime.setOnClickListener {
             startHour = getCurrentTime()
@@ -112,6 +224,7 @@ class DuolingoFragment : Fragment() {
 
             binding.timeNewStart.text = startHour
             binding.timeStart.text = newStartHour
+            startHour = newStartHour
             binding.timeEnd.text = "$endHour"
 
             binding.textState.text = "Continue"
@@ -126,7 +239,7 @@ class DuolingoFragment : Fragment() {
             binding.timeNewStart1.text = startHour1
             binding.timeStart1.text = newStartHour1
             binding.timeEnd1.text = "$endHour1"
-
+            startHour1 = newStartHour1
             binding.textState1.text = "Continue"
             println("continue1 : $newStartHour1 - $timeRemaining1")
             println("continue1 : $endHour1 - $timeElapsed1")
