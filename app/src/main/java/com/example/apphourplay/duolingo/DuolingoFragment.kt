@@ -1,15 +1,16 @@
-package com.example.apphourplay
+package com.example.apphourplay.duolingo
 
 import android.app.Dialog
 import android.graphics.Color
-import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.format.DateUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.example.apphourplay.databinding.CardDuolingoAddTimeBinding
 import com.example.apphourplay.databinding.FragmentDuolingoBinding
 import com.example.apphourplay.databinding.SettingsDuolingoDialogBinding
@@ -17,6 +18,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DuolingoFragment : Fragment() {
+
+    private lateinit var viewModel: DuolingoViewModel
 
     private lateinit var binding : FragmentDuolingoBinding
     private lateinit var bindingDialog: SettingsDuolingoDialogBinding
@@ -55,15 +58,17 @@ class DuolingoFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View {
         binding = FragmentDuolingoBinding.inflate(inflater)
 
-        binding.time.text = "Faltan $timeMinutes Minutes"
+        viewModel = ViewModelProvider(this)[DuolingoViewModel::class.java]
+
+        binding.duolingoViewModel = viewModel
+        binding.lifecycleOwner = this
+
         binding.time1.text = "Faltan $timeMinutes Minutes"
 
         unity = (100/timeMinutes.toFloat())
-
-        println("unityy : $unity")
 
         binding.buttonAddTime.setOnClickListener {
             bindingDialogAdd = CardDuolingoAddTimeBinding.inflate(layoutInflater)
@@ -163,16 +168,6 @@ class DuolingoFragment : Fragment() {
             }
         }
 
-        binding.buttonCalculeTime.setOnClickListener {
-            startHour = getCurrentTime()
-            endHour = addTime(0,timeMinutes)
-            binding.timeStart.text = "$startHour"
-            binding.timeEnd.text = "$endHour"
-
-            binding.textState.text = "Start"
-            binding.progressBar.progress = 0 //(unity*timeMinutes).toInt()
-            println("start : $startHour - $endHour")
-        }
         binding.buttonCalculeTime1.setOnClickListener {
             startHour1 = getCurrentTime()
             endHour1 = addTime(0,timeMinutes)

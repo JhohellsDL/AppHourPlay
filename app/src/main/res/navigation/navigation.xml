@@ -40,7 +40,7 @@
         tools:layout="@layout/activity_main2" />
     <fragment
         android:id="@+id/duolingoFragment"
-        android:name="com.example.apphourplay.DuolingoFragment"
+        android:name="com.example.apphourplay.duolingo.DuolingoFragment"
         android:label="@string/duolingo"
         tools:layout="@layout/fragment_duolingo" />
 </navigation>
