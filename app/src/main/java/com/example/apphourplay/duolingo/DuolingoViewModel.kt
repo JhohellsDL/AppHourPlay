@@ -36,12 +36,22 @@ class DuolingoViewModel: ViewModel() {
         DateUtils.formatElapsedTime(it)
     }
 
+    private var _countDownTime = MutableLiveData<Int>()
+    val countDownTime: LiveData<Int>
+        get() = _countDownTime
+
     private var _startHour = MutableLiveData<String>()
     val startHour : LiveData<String>
         get() = _startHour
+    private var _newStartHour = MutableLiveData<String>()
+    val newStartHour : LiveData<String>
+        get() = _newStartHour
     private var _endHour = MutableLiveData<String>()
     val endHour: LiveData<String>
         get() = _endHour
+    private var _stopHour = MutableLiveData<String>()
+    val stopHour: LiveData<String>
+        get() = _stopHour
 
     private var _timeMinutes = MutableLiveData<Int>()
     val timeMinutes: LiveData<Int>
@@ -73,8 +83,11 @@ class DuolingoViewModel: ViewModel() {
         timer.cancel()
     }
 
-    fun onTimerStart(){
-        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+    // Ingresar el tiempo en segundos
+    fun onTimerStart(pTime: Int){
+
+        val timeLong = (pTime*1000).toLong()
+        timer = object : CountDownTimer(timeLong, ONE_SECOND) {
 
             override fun onTick(millisUntilFinished: Long) {
                 _currentTime.value = millisUntilFinished/1000
@@ -97,6 +110,26 @@ class DuolingoViewModel: ViewModel() {
         _unity.value = (100/12000F)
         _progressBar.value = 100
     }
+    fun onPausedTime(){
+        _stopHour.value = getCurrentTime()
+        _timeRemaining.value = currentTime.value!!.toInt()
+        _state.value = STATE_STOP
+        Log.i("TimeDuo", "stop!:_ ${_timeRemaining.value}")
+        timer.cancel()
+    }
+
+    fun onContinueTime(){
+        _newStartHour.value = startHour.value
+        _startHour.value = getCurrentTime()
+        _endHour.value = addTime(0, (_timeRemaining.value!!/60))
+        _state.value = STATE_CONTINUE
+        onTimerStart(_timeRemaining.value!!)
+    }
+
+    fun stopTimer(){
+        Log.i("TimeDuo", "stop!:_ ${_currentTime.value}")
+        timer.cancel()
+    }
 
 
 
@@ -116,7 +149,6 @@ class DuolingoViewModel: ViewModel() {
     }
     fun initAll(){
         onStartTime()
-        onTimerStart()
-        Log.i("TimeDuo","ok111")
+        onTimerStart(3600)
     }
 }

@@ -147,7 +147,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/comfortaa"
-                            android:text="@string/hour_minutes"
+                            tools:text="@string/hour_minutes"
+                            android:text="@{duolingoViewModel.stopHour}"
                             android:textColor="@color/gray_2"
                             android:textStyle="bold" />
 
@@ -181,6 +182,7 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:textSize="11sp"
+                            android:text="@{duolingoViewModel.newStartHour}"
                             android:fontFamily="@font/comfortaa"
                             tools:text="@string/hour_minutes"
                             android:textColor="@color/gray_1"
@@ -273,7 +275,8 @@
                         android:background="@drawable/button_animado_1"
                         android:text="@string/stop"
                         android:textColor="@color/gray_2"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:onClick="@{() -> duolingoViewModel.onPausedTime()}"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button_calcule_time"
@@ -297,7 +300,8 @@
                         android:background="@drawable/button_animado_1"
                         android:text="@string/continue_text"
                         android:textColor="@color/gray_2"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:onClick="@{() -> duolingoViewModel.onContinueTime()}"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
