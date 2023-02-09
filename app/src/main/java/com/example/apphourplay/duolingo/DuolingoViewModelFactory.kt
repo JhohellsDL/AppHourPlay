@@ -13,7 +13,7 @@ class DuolingoViewModelFactory(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DuolingoViewModel::class.java)){
-            return super.create(modelClass)
+            return DuolingoViewModel(dataSource, application) as T
         }
         throw java.lang.IllegalArgumentException("ViewModel Desconocida!!!")
     }
