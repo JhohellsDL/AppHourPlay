@@ -1,16 +1,17 @@
 package com.example.apphourplay.duolingo
 
+import android.app.Application
 import android.os.CountDownTimer
 import android.text.format.DateUtils
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.example.apphourplay.database.DuolingoDataBaseDao
 import java.util.*
 
-class DuolingoViewModel: ViewModel() {
+class DuolingoViewModel(
+    val database: DuolingoDataBaseDao,
+    application: Application): AndroidViewModel(application) {
     companion object {
         // These represent different important times
         // This is when the game is over

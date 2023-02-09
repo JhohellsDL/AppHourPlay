@@ -18,7 +18,6 @@ abstract class DuolingoDataBase: RoomDatabase() {
         fun getInstance(context: Context) : DuolingoDataBase {
              synchronized(this){
                  var instance = INSTANCE
-
                  if (instance == null){
                      instance = Room.databaseBuilder(
                          context.applicationContext,

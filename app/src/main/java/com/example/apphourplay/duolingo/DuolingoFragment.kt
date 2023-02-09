@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.example.apphourplay.database.DuolingoDataBase
 import com.example.apphourplay.databinding.CardDuolingoAddTimeBinding
 import com.example.apphourplay.databinding.FragmentDuolingoBinding
 import com.example.apphourplay.databinding.SettingsDuolingoDialogBinding
@@ -56,7 +57,11 @@ class DuolingoFragment : Fragment() {
     ): View {
         binding = FragmentDuolingoBinding.inflate(inflater)
 
-        viewModel = ViewModelProvider(this)[DuolingoViewModel::class.java]
+        val application = requireNotNull(this.activity).application
+        val dataSource = DuolingoDataBase.getInstance(application).duolingoDataBaseDao
+        val viewModelFactory = DuolingoViewModelFactory(dataSource, application)
+
+        viewModel = ViewModelProvider(this, viewModelFactory)[DuolingoViewModel::class.java]
 
         binding.duolingoViewModel = viewModel
         binding.lifecycleOwner = this
