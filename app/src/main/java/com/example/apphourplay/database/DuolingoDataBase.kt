@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DuolingoTime::class], version = 1, exportSchema = false)
+@Database(entities = [DuolingoUserTime::class], version = 1, exportSchema = false)
 abstract class DuolingoDataBase: RoomDatabase() {
 
     abstract val duolingoDataBaseDao: DuolingoDataBaseDao
@@ -28,7 +28,6 @@ abstract class DuolingoDataBase: RoomDatabase() {
                          .build()
                      INSTANCE = instance
                  }
-
                  return instance
              }
         }

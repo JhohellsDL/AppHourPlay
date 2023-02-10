@@ -3,9 +3,10 @@ package com.example.apphourplay.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Calendar
 
 @Entity(tableName = "duolingo_time_table")
-data class DuolingoTime(
+data class DuolingoUserTime(
     @PrimaryKey(autoGenerate = true)
     var userId: Long = 0L,
 
@@ -13,16 +14,16 @@ data class DuolingoTime(
     val userName: String = "User",
 
     @ColumnInfo(name = "start_time_milli")
-    val startTimeMilli: Long = System.currentTimeMillis(),
+    val startTimeMilli: Int = Calendar.getInstance().get(Calendar.MINUTE),
 
     @ColumnInfo(name = "star_time_milli_2")
-    val startTimeMilli2: Long = startTimeMilli,
+    val startTimeMilli2: Int = startTimeMilli,
 
     @ColumnInfo(name = "end_time_milli")
-    var endTimeMilli: Long = startTimeMilli,
+    var endTimeMilli: Int = startTimeMilli,
 
     @ColumnInfo(name = "stop_time_milli")
-    var stopTimeMilli: Long = startTimeMilli,
+    var stopTimeMilli: Int = startTimeMilli,
 
     @ColumnInfo(name = "time_extra")
     var timeExtra: Int = -1

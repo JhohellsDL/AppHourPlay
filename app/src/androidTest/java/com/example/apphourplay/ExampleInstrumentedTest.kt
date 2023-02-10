@@ -5,7 +5,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.apphourplay.database.DuolingoDataBase
 import com.example.apphourplay.database.DuolingoDataBaseDao
-import com.example.apphourplay.database.DuolingoTime
+import com.example.apphourplay.database.DuolingoUserTime
 import org.junit.After
 
 import org.junit.Test
@@ -44,7 +44,7 @@ class ExampleInstrumentedTest {
     @Test
     @Throws(Exception::class)
     fun insertAndGetNight() {
-        val night = DuolingoTime()
+        val night = DuolingoUserTime()
         sleepDao.insert(night)
         val tonight = sleepDao.getDuolingoUser()
         assertEquals(tonight?.timeExtra, -1)
