@@ -57,6 +57,8 @@ class DuolingoFragment : Fragment() {
     ): View {
         binding = FragmentDuolingoBinding.inflate(inflater)
 
+        //**************************************************************************************
+
         val application = requireNotNull(this.activity).application
         val dataSource = DuolingoDataBase.getInstance(application).duolingoDataBaseDao
         val viewModelFactory = DuolingoViewModelFactory(dataSource, application)
@@ -65,6 +67,8 @@ class DuolingoFragment : Fragment() {
 
         binding.duolingoViewModel = viewModel
         binding.lifecycleOwner = this
+
+        //**************************************************************************************
 
         binding.time1.text = "Faltan $timeMinutes Minutes"
 

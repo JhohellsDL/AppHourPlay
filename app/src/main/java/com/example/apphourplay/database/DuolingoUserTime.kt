@@ -11,19 +11,25 @@ data class DuolingoUserTime(
     var userId: Long = 0L,
 
     @ColumnInfo(name = "name_user")
-    val userName: String = "User",
+    var userName: String = "User",
 
     @ColumnInfo(name = "start_time_milli")
-    val startTimeMilli: Int = Calendar.getInstance().get(Calendar.MINUTE),
+    var startTimeMilli: String = "${Calendar.getInstance().get(Calendar.HOUR_OF_DAY)}:${Calendar.getInstance().get(Calendar.MINUTE)}",
 
     @ColumnInfo(name = "star_time_milli_2")
-    val startTimeMilli2: Int = startTimeMilli,
+    var startTimeMilli2: String = startTimeMilli,
 
     @ColumnInfo(name = "end_time_milli")
-    var endTimeMilli: Int = startTimeMilli,
+    var endTimeMilli: String = startTimeMilli,
 
     @ColumnInfo(name = "stop_time_milli")
-    var stopTimeMilli: Int = startTimeMilli,
+    var stopTimeMilli: String = startTimeMilli,
+
+    @ColumnInfo(name = "time_state")
+    var timeState: String = "off",
+
+    @ColumnInfo(name = "time_remaining")
+    var timeRemaining: Int = -1,
 
     @ColumnInfo(name = "time_extra")
     var timeExtra: Int = -1

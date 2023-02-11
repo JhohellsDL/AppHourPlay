@@ -15,7 +15,7 @@ interface DuolingoDataBaseDao {
     @Update
     fun update(duolingoUser: DuolingoUserTime)
 
-    @Query(value = "SELECT * from duolingo_time_table WHERE userId = :key")
+    @Query("SELECT * FROM duolingo_time_table WHERE userId = :key")
     fun get(key: Long): DuolingoUserTime
 
     @Query(value = "DELETE FROM duolingo_time_table")
